@@ -6,9 +6,11 @@ A production-ready starter kit for building command-line tools with TypeScript a
 
 - **TypeScript** - Full type safety and modern JavaScript features
 - **Commander.js** - Powerful CLI argument parsing and command handling
+- **Chalk** - Beautiful terminal styling and colors
+- **Ora** - Elegant terminal spinners for loading states
 - **Development Mode** - Fast iteration with tsx (no build step needed)
 - **Production Ready** - Compiles to optimized JavaScript for distribution
-- **Example Command** - Working "hello" command to demonstrate the pattern
+- **Example Commands** - Working commands to demonstrate patterns and styling
 
 ## Prerequisites
 
@@ -70,18 +72,31 @@ npm start hello Bob
 # Output: Hello, Bob!
 ```
 
-### Example Command
+### Example Commands
 
-The starter includes a sample "hello" command:
+The starter includes sample commands demonstrating chalk and ora:
+
+**Hello command** - Simple styled greeting:
 
 ```bash
-# With default argument
+# Basic greeting with chalk styling
 npm run dev hello
-# Output: Hello, World!
+# Output: Hello, World! (in colors)
 
-# With custom name
+# Custom name
 npm run dev hello Alice
-# Output: Hello, Alice!
+# Output: Hello, Alice! (in colors)
+
+# With loading spinner
+npm run dev hello Alice --spinner
+# Shows a spinner, then displays the greeting
+```
+
+**Demo command** - Full showcase of chalk colors and ora spinners:
+
+```bash
+npm run dev demo
+# Displays all available colors and spinner states
 ```
 
 ## Available Scripts
@@ -116,8 +131,35 @@ program
   .argument('<required>', 'Required argument')
   .action((required, options) => {
     // Your command logic here
-    console.log(`Required: ${required}, Flag: ${options.flag}`);
+    console.log(chalk.blue(`Required: ${required}, Flag: ${options.flag}`));
   });
+```
+
+### Using Chalk and Ora
+
+**Chalk** - Add colors and styles to your output:
+
+```typescript
+import chalk from 'chalk';
+
+console.log(chalk.green('Success!'));
+console.log(chalk.red.bold('Error!'));
+console.log(chalk.blue(`Hello ${chalk.yellow('World')}!`));
+```
+
+**Ora** - Show loading spinners:
+
+```typescript
+import ora from 'ora';
+
+const spinner = ora('Loading...').start();
+
+setTimeout(() => {
+  spinner.succeed('Done!');
+  // or spinner.fail('Failed!');
+  // or spinner.warn('Warning!');
+  // or spinner.info('Info!');
+}, 2000);
 ```
 
 ## TypeScript Configuration
@@ -149,6 +191,8 @@ your-cli-name hello
 
 - [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
 - [Commander.js](https://github.com/tj/commander.js) - CLI framework
+- [Chalk](https://github.com/chalk/chalk) - Terminal string styling
+- [Ora](https://github.com/sindresorhus/ora) - Elegant terminal spinners
 - [tsx](https://github.com/esbuild-kit/tsx) - TypeScript execution for development
 
 ## License
