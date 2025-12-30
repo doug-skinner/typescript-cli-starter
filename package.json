@@ -1,0 +1,19 @@
+{
+  "name": "@dougskinner/typescript-cli-starter",
+  "version": "1.0.0",
+  "description": "A starter kit for commander based cli tools built with typescript because I was sick of doing the same setup over and over",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doug-skinner/typescript-cli-starter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/doug-skinner/typescript-cli-starter/issues"
+  },
+  "homepage": "https://github.com/doug-skinner/typescript-cli-starter#readme"
+}
